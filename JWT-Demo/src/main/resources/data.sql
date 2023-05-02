@@ -1,0 +1,5 @@
+INSERT INTO store (name) VALUES ('store1'),('store2'),('store3');
+INSERT INTO book (title,STORE_ID) VALUES ('book1',1),('book2',1),('book3',2),('book4',2),('book5',3),('book6',3);
+INSERT INTO USER_STORE (username,password) VALUES ('moayad','$2a$10$KqVLLdq2rtsBCBRC1kEl7.Dsh88f9XOtXxlTt7V0nXwOwNjAWnssi'),('ali','$2a$10$KqVLLdq2rtsBCBRC1kEl7.Dsh88f9XOtXxlTt7V0nXwOwNjAWnssi'),('Ahmad','$2a$10$KqVLLdq2rtsBCBRC1kEl7.Dsh88f9XOtXxlTt7V0nXwOwNjAWnssi'),('rami','$2a$10$KqVLLdq2rtsBCBRC1kEl7.Dsh88f9XOtXxlTt7V0nXwOwNjAWnssi'),('firas','$2a$10$KqVLLdq2rtsBCBRC1kEl7.Dsh88f9XOtXxlTt7V0nXwOwNjAWnssi'),('mohanad','$2a$10$KqVLLdq2rtsBCBRC1kEl7.Dsh88f9XOtXxlTt7V0nXwOwNjAWnssi');
+INSERT INTO ROLE (name) VALUES ('storeAdmin'),('normalUser');
+INSERT INTO SEC_ROLE_USER (USER_ID,ROLE_ID) VALUES ('moayad',1),('ali',1),('Ahmad',2),('rami',2);
