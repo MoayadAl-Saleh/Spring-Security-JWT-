@@ -17,24 +17,28 @@ import java.util.List;
 
 @Service
 @Slf4j
-public class UserService implements UserDetailsService {
+public class UserService implements UserDetailsService
+{
+    private final RepoUser repoUser;
 
-    @Autowired
-    private RepoUser repoUser ;
-    @Override
-    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-
-        //Logic to get the user form the Database
-        UserStore userStore = repoUser.findByUsername(userName);
-        log.info(userStore.getUsername() +"    "+userStore.getRoles().toString());
-        if (userStore == null) {
-            throw new UsernameNotFoundException("User not found");
-        }
-
-        return new User(userStore.getUsername(),userStore.getPassword(),getAuthorities(userStore));
+    public UserService (RepoUser repoUser)
+    {
+        this.repoUser = repoUser;
     }
 
-    private List<GrantedAuthority> getAuthorities(UserStore userStore)
+    @Override
+    public UserDetails loadUserByUsername (String userName) throws UsernameNotFoundException
+    {
+        //Logic to get the user form the Database
+        UserStore userStore = repoUser.findByUsername(userName);
+        if (userStore == null)
+        {
+            throw new UsernameNotFoundException("User not found");
+        }
+        return new User(userStore.getUsername(), userStore.getPassword(), getAuthorities(userStore));
+    }
+
+    private List<GrantedAuthority> getAuthorities (UserStore userStore)
     {
         List<GrantedAuthority> authorities = new ArrayList<>();
 

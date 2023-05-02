@@ -21,5 +21,4 @@ public class Store {
     @OneToMany(mappedBy = "store")
     @JsonManagedReference
     private List<Book> books = new ArrayList<>();
-    // other store properties and getters/setters
 }
